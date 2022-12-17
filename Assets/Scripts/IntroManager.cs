@@ -12,7 +12,7 @@ public class IntroManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(FadeTextToFullAlpha(image));
+        StartCoroutine(FadeTextToFullAlpha(1f, image));
     }
 
     // Update is called once per frame
@@ -21,26 +21,23 @@ public class IntroManager : MonoBehaviour
         
     }
 
-    public IEnumerator FadeTextToFullAlpha(Image image)
+    public IEnumerator FadeTextToFullAlpha(float t, Image image)
     {
         image.color = new Color(image.color.r, image.color.g, image.color.b, 0);
-        for (float f = 0f; f < 1; f += 0.005f)
+        yield return new WaitForSeconds(1);
+
+        while (image.color.a < 1.0f)
         {
-            Color c = image.GetComponent<Image>().color;
-            c.a = f;
-            image.GetComponent<Image>().color = c;
+            image.color = new Color(image.color.r, image.color.g, image.color.b, image.color.a + (Time.deltaTime / t));
             yield return null;
         }
-        
         image.color = new Color(image.color.r, image.color.g, image.color.b, 1);
+        
         yield return new WaitForSeconds(3);
 
-
-        for (float f = 1f; f > 0; f -= 0.005f)
+        while (image.color.a > 0.0f)
         {
-            Color c = image.GetComponent<Image>().color;
-            c.a = f;
-            image.GetComponent<Image>().color = c;
+            image.color = new Color(image.color.r, image.color.g, image.color.b, image.color.a - (Time.deltaTime / t));
             yield return null;
         }
     }
