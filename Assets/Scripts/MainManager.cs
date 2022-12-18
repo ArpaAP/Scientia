@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainManager : MonoBehaviour
@@ -21,7 +19,7 @@ public class MainManager : MonoBehaviour
     {
         image.color = new Color(image.color.r, image.color.g, image.color.b, 1);
         yield return new WaitForSeconds(1);
-        
+
         while (image.color.a > 0.0f)
         {
             image.color = new Color(image.color.r, image.color.g, image.color.b, image.color.a - (Time.deltaTime / t));
