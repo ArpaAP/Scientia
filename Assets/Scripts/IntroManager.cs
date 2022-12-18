@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class IntroManager : MonoBehaviour
 {
     [SerializeField] Image image = null;
+    [SerializeField] TMP_Text text = null;
 
     // Start is called before the first frame update
     void Start()
@@ -24,21 +25,27 @@ public class IntroManager : MonoBehaviour
     public IEnumerator FadeTextToFullAlpha(float t, Image image)
     {
         image.color = new Color(image.color.r, image.color.g, image.color.b, 0);
+        text.color = new Color(text.color.r, text.color.g, text.color.b, 0);
         yield return new WaitForSeconds(1);
 
         while (image.color.a < 1.0f)
         {
             image.color = new Color(image.color.r, image.color.g, image.color.b, image.color.a + (Time.deltaTime / t));
+            text.color = new Color(text.color.r, text.color.g, text.color.b, text.color.a + (Time.deltaTime / t));
             yield return null;
         }
         image.color = new Color(image.color.r, image.color.g, image.color.b, 1);
-        
+        text.color = new Color(text.color.r, text.color.g, text.color.b, 1);
+
         yield return new WaitForSeconds(3);
 
         while (image.color.a > 0.0f)
         {
             image.color = new Color(image.color.r, image.color.g, image.color.b, image.color.a - (Time.deltaTime / t));
+            text.color = new Color(text.color.r, text.color.g, text.color.b, text.color.a - (Time.deltaTime / t));
             yield return null;
         }
+
+        SceneManager.LoadScene("Main");
     }
 }
