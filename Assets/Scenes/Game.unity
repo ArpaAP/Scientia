@@ -486,3 +486,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 36
+  maxJumpSpeed: 0
+  sprites:
+  - {fileID: 649530886, guid: 0151114e06e154653b8723404a3d5577, type: 3}
+  - {fileID: -706648289, guid: 0151114e06e154653b8723404a3d5577, type: 3}
+  - {fileID: -1221589988, guid: 0151114e06e154653b8723404a3d5577, type: 3}
+  - {fileID: -173183780, guid: 0151114e06e154653b8723404a3d5577, type: 3}
