@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainManager : MonoBehaviour
@@ -13,6 +14,10 @@ public class MainManager : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            SceneManager.LoadScene("Game");
+        }
     }
 
     public IEnumerator FadeTextToFullAlpha(float t, Image image)
